@@ -4,7 +4,7 @@ public class Cube{
 	private int[] orientation = new int[6];
 	private Rotate rotate = new Rotate();
 
-	Cube(){
+	public Cube(){
 	
 		for(int i =0; i < 6; i++)
 			orientation[i] = i;
