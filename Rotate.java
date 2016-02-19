@@ -1,46 +1,6 @@
 public class Rotate{
 
-	public void front(Cube cube){
-
-	}
-
-	public void frontInv(Cube cube){
-
-	}
-
-	public void right(Cube cube){
-
-	}
-
-	public void rightInv(Cube cube){
-
-	}
-
-	public void left(Cube cube){
-
-	}
-
-	public void leftInv(Cube cube){
-
-	}
-
-	public void up(Cube cube){
-
-	}
-
-	public void upInv(Cube cube){
-
-	}
-
-	public void down(Cube cube){
-
-	}
-
-	public void downInv(Cube cube){
-
-	}
-
-	private void rotate(int side, boolean clockwise){
+	public int[][] rotation(int[][] cube, int side, boolean clockwise){
 
 		int[] face = cube[side];
 		int[] tmp = new int[2];
@@ -72,22 +32,22 @@ public class Rotate{
 
 			switch(side){
 				
-				case 0: rotateGreen();
+				case 0: cube = rotateGreen(cube);
 					break;
 
-				case 1: rotateRed();
+				case 1: cube = rotateRed(cube);
 					break;
 
-				case 2: rotateBlue();
+				case 2: cube = rotateBlue(cube);
 					break;
 
-				case 3: rotateOrange();
+				case 3: cube = rotateOrange(cube);
 					break;
 
-				case 4: rotateWhite();
+				case 4: cube = rotateWhite(cube);
 					break;
 
-				case 5: rotateYellow();
+				case 5: cube = rotateYellow(cube);
 					break;
 
 				default: break;
@@ -95,11 +55,13 @@ public class Rotate{
 		} else {
 			
 			for(int i = 0; i < 3; i++)
-				rotate(side,true);
+				rotate(cube,side,true);
 		}
+
+		return cube;
 	}
 
-	private void rotateGreen(){
+	private int[][] rotateGreen(int[][] cube){
 		
 		int[] tmp = new int[3];
 		int[] tmp2 = new int[3];
@@ -132,9 +94,11 @@ public class Rotate{
 		cube[left][2] = tmp[0];
 		cube[left][5] = tmp[1];
 		cube[left][8] = tmp[2];
+
+		return cube;
 	}
 
-	private void rotateRed(){
+	private int[][] rotateRed(int[][] cube){
 		
 		int[] tmp = new int[3];
 		int[] tmp2 = new int[3];
@@ -167,9 +131,11 @@ public class Rotate{
 		cube[left][2] = tmp[0];
 		cube[left][5] = tmp[1];
 		cube[left][8] = tmp[2];
+
+		return cube;
 	}
 
-	private void rotateBlue(){
+	private int[][] rotateBlue(int[][] cube){
 		
 		int[] tmp = new int[3];
 		int[] tmp2 = new int[3];
@@ -177,17 +143,22 @@ public class Rotate{
 		int bottom = 5;
 		int left = 1;
 		int right = 3;
+
+		return cube;
 	}
 
-	private void rotateOrange(){
+	private int[][] rotateOrange(int[][] cube){
 
+		return cube;
 	}
 
-	private void rotateWhite(){
+	private int[][] rotateWhite(int[][] cube){
 
+		return cube;
 	}
 
-	private void rotateYellow(){
+	private int[][] rotateYellow(int[][] cube){
 
+		return cube;
 	}
 }
