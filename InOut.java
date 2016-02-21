@@ -25,27 +25,27 @@ public class InOut{
 		switch(color){
 			
 			case "RED":
-				println(ANSI_RED+output+ANSI_RESET);
+				print(ANSI_RED+output+ANSI_RESET);
 				break;
 
 			case "GREEN":
-				println(ANSI_GREEN+output+ANSI_RESET);
+				print(ANSI_GREEN+output+ANSI_RESET);
 				break;
 
 			case "YELLOW":
-				println(ANSI_YELLOW+output+ANSI_RESET);
+				print(ANSI_YELLOW+output+ANSI_RESET);
 				break;
 
 			case "BLUE":
-				println(ANSI_BLUE+output+ANSI_RESET);
+				print(ANSI_BLUE+output+ANSI_RESET);
 				break;
 
 			case "CYAN":
-				println(ANSI_CYAN+output+ANSI_RESET);
+				print(ANSI_CYAN+output+ANSI_RESET);
 				break;
 
 			default:
-				println(output);
+				print(output);
 				break;
 		}
 	}

@@ -1,6 +1,6 @@
 public class Cube{
 
-	private int[][] cube = new int[6][9];
+	private int[][] faces = new int[6][9];
 	private int[] orientation = new int[6];
 	private Rotate rotate = new Rotate();
 
@@ -10,54 +10,54 @@ public class Cube{
 			orientation[i] = i;
 	}
 
-	public void front(Cube cube){
+	public void front(){
 
-		cube = rotate.rotation(cube,orientation[0],true);
+		faces = rotate.rotation(faces,orientation[0],true);
 	}
 
-	public void frontInv(Cube cube){
+	public void frontInv(){
 
-		cube = rotate.rotation(cube,orientation[0],false);
+		faces = rotate.rotation(faces,orientation[0],false);
 	}
 
-	public void right(Cube cube){
+	public void right(){
 
-		cube = rotate.rotation(cube,orientation[1],true);
+		faces = rotate.rotation(faces,orientation[1],true);
 	}
 
-	public void rightInv(Cube cube){
+	public void rightInv(){
 
-		cube = rotate.rotation(cube,orientation[1],false);
+		faces = rotate.rotation(faces,orientation[1],false);
 	}
 
-	public void left(Cube cube){
+	public void left(){
 
-		cube = rotate.rotation(cube,orientation[3],true);
+		faces = rotate.rotation(faces,orientation[3],true);
 	}
 
-	public void leftInv(Cube cube){
+	public void leftInv(){
 
-		cube = rotate.rotation(cube,orientation[3],false);
+		faces = rotate.rotation(faces,orientation[3],false);
 	}
 
-	public void up(Cube cube){
+	public void up(){
 
-		cube = rotate.rotation(cube,orientation[4],true);
+		faces = rotate.rotation(faces,orientation[4],true);
 	}
 
-	public void upInv(Cube cube){
+	public void upInv(){
 
-		cube = rotate.rotation(cube,orientation[4],false);
+		faces = rotate.rotation(faces,orientation[4],false);
 	}
 
-	public void down(Cube cube){
+	public void down(){
 
-		cube = rotate.rotation(cube,orientation[5],true);
+		faces = rotate.rotation(faces,orientation[5],true);
 	}
 
-	public void downInv(Cube cube){
+	public void downInv(){
 
-		cube = rotate.rotation(cube,orientation[5],false);
+		faces = rotate.rotation(faces,orientation[5],false);
 	}
 
 	public void printCube(){
@@ -69,15 +69,37 @@ public class Cube{
 
 			for(int j = 0; j < 9; j++){
 				
-				switch(j){
+				switch(faces[i][j]){
 
 					case 0:
-						io.colorPrint(GREEN, block);
+						io.colorPrint("GREEN", block);
 						break;
 					
 					case 1:
-						io.colorPrint(RED, block);
+						io.colorPrint("RED", block);
+						break;
+
+					case 2:
+						io.colorPrint("BLUE", block);
+						break;
+
+					case 3:
+						io.colorPrint("CYAN", block);
+						break;
+
+					case 4:
+						io.colorPrint("WHITE", block);
+						break;
+
+					case 5:
+						io.colorPrint("YELLOW", block);
+						break;
+
+					default:
+						io.print(block);
+						break;
 				}
+				io.println("");
 			}
 		}
 	}

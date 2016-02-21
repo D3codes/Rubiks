@@ -55,7 +55,7 @@ public class Rotate{
 		} else {
 			
 			for(int i = 0; i < 3; i++)
-				rotate(cube,side,true);
+				rotation(cube,side,true);
 		}
 
 		return cube;
