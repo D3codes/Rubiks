@@ -8,7 +8,7 @@ public class InOut{
 	private static final String ANSI_YELLOW = "\u001B[33m";
 	private static final String ANSI_BLUE = "\u001B[34m";
 	private static final String ANSI_WHITE = "\u001B[37m";
-	private static final String ANSI_CYAN = "\u001B[36m";
+	private static final String ANSI_PURPLE = "\u001B[35m";
 
 	public void println(String output){
 
@@ -40,8 +40,8 @@ public class InOut{
 				print(ANSI_BLUE+output+ANSI_RESET);
 				break;
 
-			case "CYAN":
-				print(ANSI_CYAN+output+ANSI_RESET);
+			case "PURPLE":
+				print(ANSI_PURPLE+output+ANSI_RESET);
 				break;
 
 			default:

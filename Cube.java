@@ -4,8 +4,10 @@ public class Cube{
 	private int[] orientation = new int[6];
 	private Rotate rotate = new Rotate();
 
-	public Cube(){
-	
+	public Cube(int[][] faces){
+		
+		this.faces = faces;
+
 		for(int i =0; i < 6; i++)
 			orientation[i] = i;
 	}
@@ -67,9 +69,9 @@ public class Cube{
 
 		for(int i = 0; i < 6; i++){
 
-			for(int j = 0; j < 9; j++){
+			for(int j = 1; j <= 9; j++){
 				
-				switch(faces[i][j]){
+				switch(faces[i][j-1]){
 
 					case 0:
 						io.colorPrint("GREEN", block);
@@ -84,7 +86,7 @@ public class Cube{
 						break;
 
 					case 3:
-						io.colorPrint("CYAN", block);
+						io.colorPrint("PURPLE", block);
 						break;
 
 					case 4:
@@ -99,8 +101,11 @@ public class Cube{
 						io.print(block);
 						break;
 				}
-				io.println("");
+
+				if(j % 3 == 0)
+					io.println("");
 			}
+			io.println("");
 		}
 	}
 }
