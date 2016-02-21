@@ -59,4 +59,26 @@ public class Cube{
 
 		cube = rotate.rotation(cube,orientation[5],false);
 	}
+
+	public void printCube(){
+		
+		InOut io = new InOut();
+		String block = "[]";
+
+		for(int i = 0; i < 6; i++){
+
+			for(int j = 0; j < 9; j++){
+				
+				switch(j){
+
+					case 0:
+						io.colorPrint(GREEN, block);
+						break;
+					
+					case 1:
+						io.colorPrint(RED, block);
+				}
+			}
+		}
+	}
 }
