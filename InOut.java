@@ -20,6 +20,11 @@ public class InOut{
 		System.out.print(output);
 	}
 
+	public void printError(String output){
+
+		System.err.println(output);
+	}
+
 	public void colorPrint(String color, String output){
 	
 		switch(color){
@@ -43,6 +48,10 @@ public class InOut{
 			case "PURPLE":
 				print(ANSI_PURPLE+output+ANSI_RESET);
 				break;
+
+			case "WHITE":
+				print(ANSI_WHITE+output+ANSI_RESET);
+					break;
 
 			default:
 				print(output);

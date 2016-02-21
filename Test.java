@@ -10,6 +10,14 @@ public class Test{
 
 		Cube cube = new Cube(faces);
 
+		cube.up();
+		cube.downInv();
+		cube.changeOrientation(1,5);
+		cube.right();
+		cube.frontInv();
+		cube.changeOrientation(5,3);
+		cube.left();
+		
 		cube.printCube();
 	}
 }
