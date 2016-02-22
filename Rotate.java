@@ -202,9 +202,9 @@ public class Rotate{
 		cube[bottom][3] = tmp2[1];
 		cube[bottom][6] = tmp2[2];
 
-		cube[left][2] = tmp[0];
+		cube[left][2] = tmp[2];
 		cube[left][5] = tmp[1];
-		cube[left][8] = tmp[2];
+		cube[left][8] = tmp[0];
 
 		return cube;
 	}

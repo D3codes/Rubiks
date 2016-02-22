@@ -3,8 +3,7 @@ public class Cube{
 	private int[][] faces = new int[6][9];
 	private int[] orientation = new int[6];
 	private Rotate rotate = new Rotate();
-
-	InOut io = new InOut();
+	private InOut io = new InOut();
 
 	private static final int GREEN = 0;
 	private static final int RED = 1;
@@ -305,6 +304,11 @@ public class Cube{
 		}
 	}
 
+	public int[] getOrientation(){
+
+		return orientation;
+	}
+
 	public void front(){
 
 		faces = rotate.rotation(faces,orientation[0],true);
@@ -355,6 +359,16 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[5],false);
 	}
 
+	public void back(){
+
+		faces = rotate.rotation(faces, orientation[2],true);
+	}
+
+	public void backInv(){
+
+		faces = rotate.rotation(faces, orientation[2], false);
+	}
+
 	public void printCube(){
 		
 		String block = "[]";
@@ -399,5 +413,73 @@ public class Cube{
 			}
 			io.println("");
 		}
+	}
+
+	public void printOrientation(){
+
+		String frontFace;
+		String rightFace;
+		switch(orientation[0]){
+
+			case 0:
+				frontFace = "green";
+				break;
+
+			case 1:
+				frontFace = "red";
+				break;
+
+			case 2:
+				frontFace = "blue";
+				break;
+
+			case 3:
+				frontFace = "orange";
+				break;
+
+			case 4:
+				frontFace = "white";
+				break;
+
+			case 5:
+				frontFace = "yellow";
+				break;
+
+			default:
+				frontFace = "error";
+				break;
+		}
+		switch(orientation[1]){
+
+			case 0:
+				rightFace = "green";
+				break;
+
+			case 1:
+				rightFace = "red";
+				break;
+
+			case 2:
+				rightFace = "blue";
+				break;
+
+			case 3:
+				rightFace = "orange";
+				break;
+
+			case 4:
+				rightFace = "white";
+				break;
+
+			case 5:
+				rightFace = "yellow";
+				break;
+
+			default:
+				rightFace = "error";
+				break;
+		}
+
+		io.println("The "+frontFace+" is facing you, with the "+rightFace+" on the right.");
 	}
 }

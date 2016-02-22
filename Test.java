@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Test{
 
 	public static void main(String[] args){
@@ -10,13 +12,29 @@ public class Test{
 
 		Cube cube = new Cube(faces);
 
+		Scanner scanner = new Scanner(System.in);
+
+		cube.front();
 		cube.up();
-		cube.downInv();
-		cube.changeOrientation(1,5);
+		cube.front();
 		cube.right();
-		cube.frontInv();
-		cube.changeOrientation(5,3);
 		cube.left();
+		cube.left();
+		cube.back();
+		cube.downInv();
+		cube.right();
+		cube.down();
+		cube.down();
+		cube.left();
+		cube.downInv();
+		cube.back();
+		cube.right();
+		cube.right();
+		cube.left();
+		cube.front();
+		cube.up();
+		cube.front();
+
 		
 		cube.printCube();
 	}

@@ -10,6 +10,16 @@ public class InOut{
 	private static final String ANSI_WHITE = "\u001B[37m";
 	private static final String ANSI_PURPLE = "\u001B[35m";
 
+	private static final String ANSI_CLEAR = "\u001b[2J";
+	private static final String ANSI_HOME = "\u001b[H";
+
+	private Scanner scanner = new Scanner(System.in);
+
+	public void clear()
+	{
+		System.out.print(ANSI_CLEAR+ANSI_HOME);
+	}
+
 	public void println(String output){
 
 		System.out.println(output);
@@ -57,5 +67,15 @@ public class InOut{
 				print(output);
 				break;
 		}
+	}
+
+	public char getChar(){
+
+		return(scanner.nextLine().charAt(0));
+	}
+
+	public String getString(){
+
+		return(scanner.nextLine());
 	}
 }
