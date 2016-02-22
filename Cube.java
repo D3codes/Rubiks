@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Cube{
 
 	private int[][] faces = new int[6][9];
@@ -307,6 +309,68 @@ public class Cube{
 	public int[] getOrientation(){
 
 		return orientation;
+	}
+
+	public void scramble(){
+
+		Random rand = new Random();
+
+		for(int i = 0; i < 20; i++){
+
+			switch(rand.nextInt(12)){
+
+			case 0:
+				right();
+				break;
+
+			case 1:
+				rightInv();
+				break;
+
+			case 2:
+				left();
+				break;
+
+			case 3:
+				leftInv();
+				break;
+
+			case 4:
+				up();
+				break;
+
+			case 5:
+				upInv();
+				break;
+
+			case 6:
+				down();
+				break;
+
+			case 7:
+				downInv();
+				break;
+
+			case 8:
+				front();
+				break;
+
+			case 9:
+				frontInv();
+				break;
+
+			case 10:
+				back();
+				break;
+
+			case 11:
+				backInv();
+				break;
+
+			default:
+				break;
+		}
+		}
 	}
 
 	public void front(){

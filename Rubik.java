@@ -67,7 +67,7 @@ public class Rubik{
 
 			cube.printCube();
 			cube.printOrientation();
-			io.print("Would you like to change (O)rientation, (T)urn a side?, or (Q)uit?: ");
+			io.print("Would you like to change (O)rientation, (T)urn a side?, (S)cramble, or (Q)uit?: ");
 			char input = io.getChar();
 
 			if(input == 'o' || input == 'O'){
@@ -83,6 +83,11 @@ public class Rubik{
 			}else if(input == 'q' || input == 'Q'){
 
 				break;
+
+			}else if(input =='s' || input == 'S'){
+
+				cube.scramble();
+				io.clear();
 
 			} else{
 
