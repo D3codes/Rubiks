@@ -480,6 +480,6 @@ public class Cube{
 				break;
 		}
 
-		io.println("The "+frontFace+" is facing you, with the "+rightFace+" on the right.");
+		io.println("The "+frontFace+" side is facing you, with the "+rightFace+" side on the right.");
 	}
 }

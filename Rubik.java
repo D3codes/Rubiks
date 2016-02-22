@@ -11,7 +11,7 @@ public class Rubik{
 
 		splashScreen();
 		Cube cube = new Cube(start());
-		cube.printCube();
+		cube = interact(cube);
 	}
 
 	public static void splashScreen(){
@@ -65,9 +65,35 @@ public class Rubik{
 
 		while(true){
 
+			cube.printCube();
 			cube.printOrientation();
-			
+			io.print("Would you like to change (O)rientation, or (T)urn sides?: ");
+			char input = io.getChar();
+
+			if(input == 'o' || input == 'O'){
+
+				cube = changeOrientation(cube);
+
+			} else if(input == 't' || input == 'T'){
+
+				cube = turnSides(cube);
+
+			} else{
+
+				io.clear();
+				io.println("Invalid input");
+			}
 			
 		}
+	}
+
+	public static Cube changeOrientation(Cube cube){
+
+		return cube;
+	}
+
+	public static Cube turnSides(Cube cube){
+
+		return cube;
 	}
 }
