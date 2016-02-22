@@ -11,7 +11,7 @@ public class Rubik{
 
 		splashScreen();
 		Cube cube = new Cube(start());
-		cube = interact(cube);
+		interact(cube);
 	}
 
 	public static void splashScreen(){
@@ -61,22 +61,28 @@ public class Rubik{
 		return faces;
 	}
 
-	public static Cube interact(Cube cube){
+	public static void interact(Cube cube){
 
 		while(true){
 
 			cube.printCube();
 			cube.printOrientation();
-			io.print("Would you like to change (O)rientation, or (T)urn sides?: ");
+			io.print("Would you like to change (O)rientation, (T)urn a side?, or (Q)uit?: ");
 			char input = io.getChar();
 
 			if(input == 'o' || input == 'O'){
 
 				cube = changeOrientation(cube);
+				io.clear();
 
 			} else if(input == 't' || input == 'T'){
 
 				cube = turnSides(cube);
+				io.clear();
+
+			}else if(input == 'q' || input == 'Q'){
+
+				break;
 
 			} else{
 
@@ -89,10 +95,73 @@ public class Rubik{
 
 	public static Cube changeOrientation(Cube cube){
 
+		io.println("Green = 0, Red = 1, Blue = 2, Orange = 3, White = 4, Yellow = 5");
+		io.print("What side do you want to face you?: ");
+		int front = io.getInt();
+		io.print("What side do you want to the right?: ");
+		int right = io.getInt();
+		cube.changeOrientation(front, right);
 		return cube;
 	}
 
 	public static Cube turnSides(Cube cube){
+
+		io.println("R = 0, R' = 1, L = 2, L' = 3, U = 4, U' = 5, D = 6, D' = 7, F = 8, F' = 9, B = 10, B' = 11");
+		int input = io.getInt();
+
+		switch(input){
+
+			case 0:
+				cube.right();
+				break;
+
+			case 1:
+				cube.rightInv();
+				break;
+
+			case 2:
+				cube.left();
+				break;
+
+			case 3:
+				cube.leftInv();
+				break;
+
+			case 4:
+				cube.up();
+				break;
+
+			case 5:
+				cube.upInv();
+				break;
+
+			case 6:
+				cube.down();
+				break;
+
+			case 7:
+				cube.downInv();
+				break;
+
+			case 8:
+				cube.front();
+				break;
+
+			case 9:
+				cube.frontInv();
+				break;
+
+			case 10:
+				cube.back();
+				break;
+
+			case 11:
+				cube.backInv();
+				break;
+
+			default:
+				break;
+		}
 
 		return cube;
 	}

@@ -78,4 +78,11 @@ public class InOut{
 
 		return(scanner.nextLine());
 	}
+
+	public int getInt(){
+
+		int val = scanner.nextInt();
+		scanner.nextLine();
+		return(val);
+	}
 }
