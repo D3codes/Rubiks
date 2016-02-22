@@ -14,7 +14,7 @@ public class Test{
 
 		Scanner scanner = new Scanner(System.in);
 
-		cube.front();
+		/*cube.front();
 		cube.up();
 		cube.front();
 		cube.right();
@@ -33,8 +33,28 @@ public class Test{
 		cube.left();
 		cube.front();
 		cube.up();
-		cube.front();
+		cube.front();*/
 
+        cube.upInv();
+        cube.leftInv();
+        cube.upInv();
+        cube.frontInv();
+        cube.right();
+        cube.right();
+        cube.backInv();
+        cube.right();
+        cube.front();
+        cube.up();
+        cube.back();
+        cube.back();
+        cube.up();
+        cube.backInv();
+        cube.left();
+        cube.upInv();
+        cube.front();
+        cube.up();
+        cube.right();
+        cube.frontInv();
 		
 		cube.printCube();
 	}
