@@ -15,7 +15,8 @@ public class Rubik{
 	}
 
 	public static void splashScreen(){
-
+		
+		io.clear();
 		io.println("+----------------------------------------+");
 		io.println("| Interactive, command line Rubik's Cube |");
 		io.println("|                                        |");
