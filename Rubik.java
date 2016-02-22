@@ -72,8 +72,8 @@ public class Rubik{
 
 			if(input == 'o' || input == 'O'){
 
-				cube = changeOrientation(cube);
 				io.clear();
+				cube = changeOrientation(cube);
 
 			} else if(input == 't' || input == 'T'){
 
@@ -100,72 +100,124 @@ public class Rubik{
 
 	public static Cube changeOrientation(Cube cube){
 
-		io.println("Green = 0, Red = 1, Blue = 2, Orange = 3, White = 4, Yellow = 5");
+		io.println("(G)reen, (R)ed, (B)lue, (O)range, (W)hite, (Y)ellow");
 		io.print("What side do you want to face you?: ");
-		int front = io.getInt();
+
+		int front = colorSelect(io.getChar());
+
 		io.print("What side do you want to the right?: ");
-		int right = io.getInt();
+		int right = colorSelect(io.getChar());
 		cube.changeOrientation(front, right);
 		return cube;
 	}
 
-	public static Cube turnSides(Cube cube){
+	public static int colorSelect(char color){
 
-		io.println("R = 0, R' = 1, L = 2, L' = 3, U = 4, U' = 5, D = 6, D' = 7, F = 8, F' = 9, B = 10, B' = 11");
-		int input = io.getInt();
+		switch(color){
 
-		switch(input){
+			case 'G':
+				return 0;
 
-			case 0:
-				cube.right();
-				break;
+			case 'g':
+				return 0;
 
-			case 1:
-				cube.rightInv();
-				break;
+			case 'R':
+				return 1;
 
-			case 2:
-				cube.left();
-				break;
+			case 'r':
+				return 1;
 
-			case 3:
-				cube.leftInv();
-				break;
+			case 'B':
+				return 2;
 
-			case 4:
-				cube.up();
-				break;
+			case 'b':
+				return 2;
 
-			case 5:
-				cube.upInv();
-				break;
+			case 'O':
+				return 3;
 
-			case 6:
-				cube.down();
-				break;
+			case 'o':
+				return 3;
 
-			case 7:
-				cube.downInv();
-				break;
+			case 'W':
+				return 4;
 
-			case 8:
-				cube.front();
-				break;
+			case 'w':
+				return 4;
 
-			case 9:
-				cube.frontInv();
-				break;
+			case 'Y':
+				return 5;
 
-			case 10:
-				cube.back();
-				break;
-
-			case 11:
-				cube.backInv();
-				break;
+			case 'y':
+				return 5;
 
 			default:
-				break;
+				return -1;
+		}
+	}
+
+	public static Cube turnSides(Cube cube){
+
+		io.println("R = R, R' = r, L = L, L' = l, U = U, U' = u, D = D, D' = d, F = F, F' = f, B = B, B' = b");
+		io.println("Turns can be one at a time or given in a string. All valid turns will be performed in the order given.");
+		io.print(": ");
+		String input = io.getString();
+
+		for(int i = 0; i < input.length(); i++){
+
+			switch(input.charAt(i)){
+
+				case 'R':
+					cube.right();
+					break;
+
+				case 'r':
+					cube.rightInv();
+					break;
+
+				case 'L':
+					cube.left();
+					break;
+
+				case 'l':
+					cube.leftInv();
+					break;
+
+				case 'U':
+					cube.up();
+					break;
+
+				case 'u':
+					cube.upInv();
+					break;
+
+				case 'D':
+					cube.down();
+					break;
+
+				case 'd':
+					cube.downInv();
+					break;
+
+				case 'F':
+					cube.front();
+					break;
+
+				case 'f':
+					cube.frontInv();
+					break;
+
+				case 'B':
+					cube.back();
+					break;
+
+				case 'b':
+					cube.backInv();
+					break;
+
+				default:
+					break;
+			}
 		}
 
 		return cube;
