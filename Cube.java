@@ -29,6 +29,17 @@ public class Cube{
 			orientation[i] = i;
 	}
 
+	public int[][] getFaces(){
+
+		int[][] sides = new int[6][9];
+
+		for(int i = 0; i < 6; i++)
+			for(int j = 0; j < 9; j++)
+				sides[i][j] = faces[i][j];
+
+		return sides;
+	}
+
 	public void changeOrientation(int front, int right){
 
 		switch(front){
@@ -304,11 +315,6 @@ public class Cube{
 				io.printError("Invalid Option");
 				break;
 		}
-	}
-
-	public int[] getOrientation(){
-
-		return orientation;
 	}
 
 	public void scramble(){
