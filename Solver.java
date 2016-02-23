@@ -20,11 +20,16 @@ public class Solver{
 
 			if(ham.getDistance(cube) != 0){
 
-				cube = ce.evolve(cube);
+				if(ham.getDistance(cube) < 10){
+					cube = ce.evolve(cube, 10);
+				} else {
+					cube = ce.evolve(cube, 6);
+				}
 
-				//cube.printCube();
+				cube.printCube();
 				io.println("Gen: "+gen+"\t| Fitness: "+ham.getDistance(cube));
 				gen++;
+
 			} else{
 
 				break;

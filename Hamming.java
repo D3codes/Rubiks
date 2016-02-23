@@ -12,18 +12,18 @@ public class Hamming{
 		return distance;
 	}
 
-	public Cube mostFit(Cube[] options){
+	public int mostFit(Cube[] options){
 
 		int most = 0;
 		int fitness = getDistance(options[0]);
 
 		for(int i = 1; i < options.length; i++)
-			if(getDistance(options[i]) < fitness){
+			if(getDistance(options[i]) <= fitness){
 
 				fitness = getDistance(options[i]);
 				most = i;
 			}
 
-		return options[most];
+		return most;
 	}
 }

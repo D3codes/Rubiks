@@ -2,9 +2,9 @@ import java.util.*;
 
 public class CubeEvolution{
 
-	public Cube evolve(Cube cube){
+	public Cube evolve(Cube cube, int depth){
 
-		return nextGen(cube, 4);
+		return nextGen(cube, depth);
 	}
 
 	private Cube nextGen(Cube cube, int checks){
@@ -12,30 +12,30 @@ public class CubeEvolution{
 		if(checks < 1)
 			return cube;
 
-		Cube[] options = new Cube[50];
-		for(int i = 0; i < 50; i++)
+		Cube[] options = new Cube[12];
+		for(int i = 0; i < options.length; i++)
 			options[i] = new Cube(cube.getFaces());
 
-		options[1].scramble();
-		options[2].scramble();
-		options[3].scramble();
+		options[0].right();
+		options[1].rightInv();
+		options[2].left();
+		options[3].leftInv();
+		options[4].up();
+		options[5].upInv();
+		options[6].down();
+		options[7].downInv();
+		options[8].front();
+		options[9].frontInv();
+		options[10].back();
+		options[11].backInv(); 
 
-		for(int i = 4; i < 50; i++)
-			options[i] = randomTurn(options[i]);
-
-		for(int i = 20; i < 50; i++)
-			options[i] = randomTurn(options[i]);
-
-		for(int i = 35; i < 50; i++)
-			options[i] = randomTurn(options[i]);
-
-		Cube[] genCheck = new Cube[50];
-		for(int i = 0; i < 50; i++)
+		Cube[] genCheck = new Cube[options.length];
+		for(int i = 0; i < genCheck.length; i++)
 			genCheck[i] = nextGen(options[i], checks-1);
 
 		Hamming ham = new Hamming();
 
-		return ham.mostFit(genCheck);
+		return genCheck[ham.mostFit(genCheck)];
 	}
 
 	private Cube randomTurn(Cube cube){
