@@ -11,6 +11,10 @@ public class CubeEvolution{
 
 		if(checks < 1)
 			return cube;
+        
+        Hamming ham = new Hamming();
+        if(ham.getDistance(cube) == 0)
+            return cube;
 
 		Cube[] options = new Cube[12];
 		for(int i = 0; i < options.length; i++)
@@ -32,8 +36,6 @@ public class CubeEvolution{
 		Cube[] genCheck = new Cube[options.length];
 		for(int i = 0; i < genCheck.length; i++)
 			genCheck[i] = nextGen(options[i], checks-1);
-
-		Hamming ham = new Hamming();
 
 		return genCheck[ham.mostFit(genCheck)];
 	}
