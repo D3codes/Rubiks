@@ -26,15 +26,16 @@ public class Solver{
 
 			if(ham.getDistance(cube) != 0){
 
-				if(ham.getDistance(cube) < 6){
+				/*if(ham.getDistance(cube) < 6){
 					cube = ce.evolve(cube, 10);
 					//solve(cube);
 					break;
 					
 				} else {
 					cube = ce.evolve(cube, 5);
-				}
-					
+				}*/
+				
+				cube = ce.evolve(cube, 6);	
 				
 				turns++;
 				cube.printCube();
