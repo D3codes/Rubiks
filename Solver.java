@@ -22,13 +22,13 @@ public class Solver{
 		CubeEvolution ce = new CubeEvolution();
 		InOut io = new InOut();
 		int turns = 0;
-		/*while(true){
+		while(true){
 
 			if(ham.getDistance(cube) != 0){
 
-				if(ham.getDistance(cube) < 14){
-					//cube = ce.evolve(cube, 10);
-					solve(cube);
+				if(ham.getDistance(cube) < 6){
+					cube = ce.evolve(cube, 10);
+					//solve(cube);
 					break;
 					
 				} else {
@@ -44,7 +44,7 @@ public class Solver{
 
 				break;
 			}
-		}*/solve(cube);
+		}//solve(cube);
 	}
 
 	public static void solve(Cube cube){
