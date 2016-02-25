@@ -23,7 +23,10 @@ public class Cube{
 
 	public Cube(int[][] faces){
 		
-		this.faces = faces;
+		
+		for(int i = 0; i < 6; i++)
+			for(int j = 0; j < 9; j++)
+				this.faces[i][j] = faces[i][j];
 
 		for(int i =0; i < 6; i++)
 			orientation[i] = i;
@@ -321,7 +324,7 @@ public class Cube{
 
 		Random rand = new Random();
 
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 10; i++){
 
 			switch(rand.nextInt(12)){
 
@@ -384,9 +387,23 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[0],true);
 	}
 
+	public int[][] f(){
+
+		Cube c = new Cube(faces);
+		c.front();
+		return c.getFaces();
+	}
+
 	public void frontInv(){
 
 		faces = rotate.rotation(faces,orientation[0],false);
+	}
+
+	public int[][] fI(){
+	
+		Cube c = new Cube(faces);
+		c.frontInv();
+		return c.getFaces();
 	}
 
 	public void right(){
@@ -394,9 +411,23 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[1],true);
 	}
 
+	public int[][] r(){
+
+		Cube c = new Cube(faces);
+		c.right();
+		return c.getFaces();
+	}
+
 	public void rightInv(){
 
 		faces = rotate.rotation(faces,orientation[1],false);
+	}
+
+	public int[][] rI(){
+
+		Cube c = new Cube(faces);
+		c.rightInv();
+		return c.getFaces();
 	}
 
 	public void left(){
@@ -404,9 +435,23 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[3],true);
 	}
 
+	public int[][] l(){
+
+		Cube c = new Cube(faces);
+		c.left();
+		return c.getFaces();
+	}
+
 	public void leftInv(){
 
 		faces = rotate.rotation(faces,orientation[3],false);
+	}
+
+	public int[][] lI(){
+
+		Cube c = new Cube(faces);
+		c.leftInv();
+		return c.getFaces();
 	}
 
 	public void up(){
@@ -414,9 +459,23 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[4],true);
 	}
 
+	public int[][] u(){
+
+		Cube c = new Cube(faces);
+		c.up();
+		return c.getFaces();
+	}
+
 	public void upInv(){
 
 		faces = rotate.rotation(faces,orientation[4],false);
+	}
+
+	public int[][] uI(){
+
+		Cube c = new Cube(faces);
+		c.upInv();
+		return c.getFaces();
 	}
 
 	public void down(){
@@ -424,9 +483,23 @@ public class Cube{
 		faces = rotate.rotation(faces,orientation[5],true);
 	}
 
+	public int[][] d(){
+
+		Cube c = new Cube(faces);
+		c.down();
+		return c.getFaces();
+	}
+
 	public void downInv(){
 
 		faces = rotate.rotation(faces,orientation[5],false);
+	}
+
+	public int[][] dI(){
+
+		Cube c = new Cube(faces);
+		c.downInv();
+		return c.getFaces();
 	}
 
 	public void back(){
@@ -434,9 +507,23 @@ public class Cube{
 		faces = rotate.rotation(faces, orientation[2],true);
 	}
 
+	public int[][] b(){
+		
+		Cube c = new Cube(faces);
+		c.back();
+		return c.getFaces();
+	}
+
 	public void backInv(){
 
 		faces = rotate.rotation(faces, orientation[2], false);
+	}
+
+	public int[][] bI(){
+
+		Cube c = new Cube(faces);
+		c.backInv();
+		return c.getFaces();
 	}
 
 	public void printCube(){
