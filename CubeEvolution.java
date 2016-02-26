@@ -4,11 +4,10 @@ public class CubeEvolution{
 
 	private InOut io = new InOut();
 
-	public Cube evolve(Cube cube, int depth){
-
+	public Cube evolve(Cube cube, int[][] goal, int depth){
 
 		Cube[] options = makeOptions(cube);
-		int[] fitArray = fitnessOptions(cube, depth);
+		int[] fitArray = fitnessOptions(cube, goal, depth);
 
 		Boolean allSame = true;
 		int fitness = fitArray[0];
@@ -18,8 +17,8 @@ public class CubeEvolution{
 
 		if(allSame){
 
-			if(fitness == 0)
-				return solve(cube);
+			/*if(fitness == 0)
+				return solve(cube);*/
 
 			Random rand = new Random();
 			return options[rand.nextInt(options.length)];
@@ -38,6 +37,37 @@ public class CubeEvolution{
 		io.println("\n"+index);
 
 		return options[index];
+	}
+
+	private int[] fitnessOptions(Cube cube, int[][] goal, int depth){
+
+		int[] answers = new int[12];
+		Cube[] options = makeOptions(cube);
+
+		for(int i = 0; i < answers.length; i++)
+			answers[i] = mostFit(options[i], goal, depth, 100);
+
+		return answers;
+	}
+
+	private int mostFit(Cube cube, int[][] goal, int depth, int fitness){
+
+		//io.println(""+fitness);
+
+		if(depth < 1)
+			return fitness;
+
+		Cube[] options = makeOptions(cube);
+		Hamming ham = new Hamming();
+		for(int i = 0; i < options.length; i++){
+
+			if(ham.getDistanceToGoal(options[i], goal) < fitness)
+				fitness = ham.getDistanceToGoal(options[i], goal);
+
+			fitness = mostFit(options[i], goal, depth-1, fitness);
+		}
+
+		return fitness;
 	}
 
 	public Cube solve(Cube cube){
@@ -75,37 +105,6 @@ public class CubeEvolution{
 		}
 	}
 
-	private int[] fitnessOptions(Cube cube, int depth){
-
-		int[] answers = new int[12];
-		Cube[] options = makeOptions(cube);
-
-		for(int i = 0; i < answers.length; i++)
-			answers[i] = mostFit(options[i], depth, 100);
-
-		return answers;
-	}
-
-	private int mostFit(Cube cube, int depth, int fitness){
-
-		//io.println(""+fitness);
-
-		if(depth < 1)
-			return fitness;
-
-		Cube[] options = makeOptions(cube);
-		Hamming ham = new Hamming();
-		for(int i = 0; i < options.length; i++){
-
-			if(ham.getDistance(options[i]) < fitness)
-				fitness = ham.getDistance(options[i]);
-
-			fitness = mostFit(options[i], depth-1, fitness);
-		}
-
-		return fitness;
-	}
-
 	private Cube[] makeOptions(Cube cube){
 
 		Cube[] options = new Cube[12];
@@ -128,7 +127,7 @@ public class CubeEvolution{
 		return options;
 	}
 
-	private Cube nextGen(Cube cube, int depth){
+	public Cube nextGen(Cube cube, int depth){
 
 		if(depth < 1)
 			return cube;
