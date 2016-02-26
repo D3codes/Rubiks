@@ -9,18 +9,24 @@ public class CubeEvolution{
 
 		Cube[] options = makeOptions(cube);
 		int[] fitArray = fitnessOptions(cube, depth);
+
 		Boolean allSame = true;
-		int index = 0;
+		int fitness = fitArray[0];
 		for(int i = 0; i < fitArray.length; i++)
-			if(fitArray[i] != fitArray[0])
+			if(fitArray[i] != fitness)
 				allSame = false;
 
 		if(allSame){
+
+			if(fitness == 0)
+				return solve(cube);
+
 			Random rand = new Random();
 			return options[rand.nextInt(options.length)];
 		}
 
-		int fitness = 100;
+		fitness = 100;
+		int index = 0;
 		for(int i = 0; i < fitArray.length; i++){
 			
 			io.print(fitArray[i]+"-");
@@ -32,6 +38,41 @@ public class CubeEvolution{
 		io.println("\n"+index);
 
 		return options[index];
+	}
+
+	public Cube solve(Cube cube){
+
+		Queue<int[][]> queue = new LinkedList<int[][]>();
+		Cube check = new Cube(cube.getFaces());
+		Hamming ham = new Hamming();
+		int checks = 1;
+
+		while(true){
+			
+			//check.printCube();
+			if(ham.getDistance(check) == 0){
+			
+				check.printCube();
+				io.println("Solved!\t| Number of checks: "+checks);
+				return check;
+			}
+
+			queue.add(check.r());
+			queue.add(check.rI());
+			queue.add(check.l());
+			queue.add(check.lI());
+			queue.add(check.f());
+			queue.add(check.fI());
+			queue.add(check.b());
+			queue.add(check.bI());
+			queue.add(check.u());
+			queue.add(check.uI());
+			queue.add(check.d());
+			queue.add(check.dI());
+			
+			check = new Cube(queue.remove());
+			checks++;
+		}
 	}
 
 	private int[] fitnessOptions(Cube cube, int depth){
