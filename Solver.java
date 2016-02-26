@@ -35,7 +35,7 @@ public class Solver{
 					cube = ce.evolve(cube, 5);
 				}*/
 				
-				cube = ce.evolve(cube, 6);	
+				cube = ce.evolve(cube, 4);	
 				
 				turns++;
 				cube.printCube();

@@ -6,10 +6,20 @@ public class CubeEvolution{
 
 	public Cube evolve(Cube cube, int depth){
 
+
 		Cube[] options = makeOptions(cube);
 		int[] fitArray = fitnessOptions(cube, depth);
-
+		Boolean allSame = true;
 		int index = 0;
+		for(int i = 0; i < fitArray.length; i++)
+			if(fitArray[i] != fitArray[0])
+				allSame = false;
+
+		if(allSame){
+			Random rand = new Random();
+			return options[rand.nextInt(options.length)];
+		}
+
 		int fitness = 100;
 		for(int i = 0; i < fitArray.length; i++){
 			
