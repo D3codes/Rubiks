@@ -6,37 +6,79 @@ public class CubeEvolution{
 
 	public Cube evolve(Cube cube, int[][] goal, int depth){
 
-		Cube[] options = makeOptions(cube);
+		Hamming ham = new Hamming();
+		if(ham.getDistanceToGoal(cube, goal) == 0)
+			return cube;
+
 		int[] fitArray = fitnessOptions(cube, goal, depth);
 
-		Boolean allSame = true;
-		int fitness = fitArray[0];
-		for(int i = 0; i < fitArray.length; i++)
-			if(fitArray[i] != fitness)
-				allSame = false;
-
-		if(allSame){
-
-			/*if(fitness == 0)
-				return solve(cube);*/
-
-			Random rand = new Random();
-			return options[rand.nextInt(options.length)];
-		}
-
-		fitness = 100;
-		int index = 0;
+		int fitness = 100;
 		for(int i = 0; i < fitArray.length; i++){
 			
 			io.print(fitArray[i]+"-");
-			if(fitArray[i] <= fitness){
+			if(fitArray[i] <= fitness)
 				fitness = fitArray[i];
-				index = i;
+		}
+		io.println("\nmost fit: "+fitness);
+
+		ArrayList<Integer> indexOfSameValues = new ArrayList<Integer>();
+		for(int i = 0; i < fitArray.length; i++)
+			if(fitArray[i] == fitness)
+				indexOfSameValues.add(i);
+
+		int index;
+		if(indexOfSameValues.size() == 1){
+
+			index = indexOfSameValues.get(0);
+			io.println("index: "+index);
+		}else{
+
+			index = shortestDistance(cube, goal, depth, indexOfSameValues, fitness);
+			io.println("shortest distance: "+index);
+		}
+
+		Cube[] options = makeOptions(cube);
+		return options[index];
+	}
+
+	private int shortestDistance(Cube cube, int[][] goal, int depth, ArrayList<Integer> indexes, int fitness){
+
+		Cube[] options = makeOptions(cube);
+		int[] answers = new int[indexes.size()];
+
+		for(int i = 0; i < answers.length; i++)
+			answers[i] = calculateDistance(options[indexes.get(i)], goal, depth, fitness, 0);
+
+		int lowestIndex = 0;
+		int lowestDistance = 100;
+		for(int i = 0; i < answers.length; i++){
+
+			//io.println(""+answers[i]);
+			if(answers[i] < lowestDistance){
+				lowestDistance = answers[i];
+				lowestIndex = i;
 			}
 		}
-		io.println("\n"+index);
 
-		return options[index];
+		return indexes.get(lowestIndex);
+	}
+
+	private int calculateDistance(Cube cube, int[][] goal, int depth, int fitness, int counter){
+
+		Hamming ham = new Hamming();
+		if(depth < 1 || ham.getDistanceToGoal(cube, goal) == fitness)
+			return counter;
+
+		Cube[] options = makeOptions(cube);
+		int lowestNum = 100;
+		for(int i = 0; i < options.length; i++){
+			int tmp = calculateDistance(options[i], goal, depth-1, fitness, counter+1);
+
+			if(tmp < lowestNum)
+				lowestNum = tmp;
+		}
+
+		return lowestNum;
 	}
 
 	private int[] fitnessOptions(Cube cube, int[][] goal, int depth){
@@ -70,7 +112,7 @@ public class CubeEvolution{
 		return fitness;
 	}
 
-	public Cube solve(Cube cube){
+	public Cube BFS(Cube cube){
 
 		Queue<int[][]> queue = new LinkedList<int[][]>();
 		Cube check = new Cube(cube.getFaces());

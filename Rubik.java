@@ -68,7 +68,7 @@ public class Rubik{
 
 			cube.printCube();
 			cube.printOrientation();
-			io.print("Would you like to change (O)rientation, (T)urn a side?, (S)cramble, or (Q)uit?: ");
+			io.print("Would you like to change (O)rientation, (T)urn a side?, (S)cramble, Sol(V)e, or (Q)uit?: ");
 			char input = io.getChar();
 
 			if(input == 'o' || input == 'O'){
@@ -90,7 +90,12 @@ public class Rubik{
 				cube.scramble();
 				io.clear();
 
-			} else{
+			}else if(input =='v' || input == 'V'){
+
+				Solver solver = new Solver();
+				cube = solver.solve(cube);
+
+			}else{
 
 				io.clear();
 				io.println("Invalid input");
