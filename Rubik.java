@@ -66,6 +66,7 @@ public class Rubik{
 
 		while(true){
 
+			io.clear();
 			cube.printCube();
 			cube.printOrientation();
 			io.print("Would you like to change (O)rientation, (T)urn a side?, (S)cramble, Sol(V)e, or (Q)uit?: ");

@@ -123,11 +123,12 @@ public class Solver{
 
 	public Cube solve(Cube cube){
 
+		InOut io = new InOut();
+		io.clear();
 		cube.printCube();
 
 		Hamming ham = new Hamming();
 		CubeEvolution ce = new CubeEvolution();
-		InOut io = new InOut();
 		int turns = 0;
 
 		while(ham.getDistanceToGoal(cube, greenCross) != 0){
@@ -135,8 +136,9 @@ public class Solver{
 			cube = ce.evolve(cube, greenCross, 4);
 
 			turns++;
-			cube.printCube();
+			io.clear();
 			io.println("Turns: "+turns+"\t| Distance to Green Cross: "+ham.getDistanceToGoal(cube, greenCross));
+			cube.printCube();
 		}
 
 		while(ham.getDistanceToGoal(cube, greenLowerLeft) != 0){
@@ -144,8 +146,9 @@ public class Solver{
 			cube = ce.evolve(cube, greenLowerLeft, 4);
 
 			turns++;
-			cube.printCube();
+			io.clear();
 			io.println("Turns: "+turns+"\t| Distance to GreenLL: "+ham.getDistanceToGoal(cube, greenFace));
+			cube.printCube();
 		}
 
 		while(ham.getDistanceToGoal(cube, greenLowerRight) != 0){
@@ -153,8 +156,9 @@ public class Solver{
 			cube = ce.evolve(cube, greenLowerRight, 4);
 
 			turns++;
-			cube.printCube();
+			io.clear();
 			io.println("Turns: "+turns+"\t| Distance to GreenLR: "+ham.getDistanceToGoal(cube, greenFace));
+			cube.printCube();
 		}
 
 		while(ham.getDistanceToGoal(cube, greenUpperLeft) != 0){
@@ -162,8 +166,9 @@ public class Solver{
 			cube = ce.evolve(cube, greenUpperLeft, 4);
 
 			turns++;
-			cube.printCube();
+			io.clear();
 			io.println("Turns: "+turns+"\t| Distance to GreenUL: "+ham.getDistanceToGoal(cube, greenFace));
+			cube.printCube();
 		}
 
 		while(ham.getDistanceToGoal(cube, greenFace) != 0){
@@ -171,45 +176,15 @@ public class Solver{
 			cube = ce.evolve(cube, greenFace, 4);
 
 			turns++;
-			cube.printCube();
+			io.clear();
 			io.println("Turns: "+turns+"\t| Distance to Green Face: "+ham.getDistanceToGoal(cube, greenFace));
-		}
-
-		while(ham.getDistanceToGoal(cube, midRedWhite) != 0){
-
-			cube = ce.evolve(cube, midRedWhite, 4);
-
-			turns++;
 			cube.printCube();
-			io.println("Turns: "+turns+"\t| Distance to MidRW: "+ham.getDistanceToGoal(cube, midRedWhite));
 		}
 
-		while(ham.getDistanceToGoal(cube, midRedYellow) != 0){
-
-			cube = ce.evolve(cube, midRedYellow, 4);
-
-			turns++;
-			cube.printCube();
-			io.println("Turns: "+turns+"\t| Distance to MidRY: "+ham.getDistanceToGoal(cube, midRedYellow));
-		}
-
-		while(ham.getDistanceToGoal(cube, midOrangeYellow) != 0){
-
-			cube = ce.evolve(cube, midOrangeYellow, 4);
-
-			turns++;
-			cube.printCube();
-			io.println("Turns: "+turns+"\t| Distance to MidOY: "+ham.getDistanceToGoal(cube, midOrangeYellow));
-		}
-
-		while(ham.getDistanceToGoal(cube, middleRow) != 0){
-
-			cube = ce.evolve(cube, middleRow, 4);
-
-			turns++;
-			cube.printCube();
-			io.println("Turns: "+turns+"\t| Distance to Middle Row: "+ham.getDistanceToGoal(cube, middleRow));
-		}
+		Algorithms alg = new Algorithms();
+		cube = alg.fillMiddle(cube);
+		cube.printCube();
+		
 
 		io.println("Solved in "+turns+" turns");
 		return cube;
