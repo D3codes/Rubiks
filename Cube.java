@@ -533,7 +533,7 @@ public class Cube{
 		for(int i = 0; i < 3; i++){
 
 			io.print("      ");
-			for(int j = i*3; j < (i*3)+3; j++)
+			for(int j = i*3; j < (i*3)+3; j++){
 				switch(faces[4][j]){
 
 					case 0:
@@ -563,6 +563,7 @@ public class Cube{
 					case default:
 						break;
 				}
+			}
 
 			io.println("");
 		}
