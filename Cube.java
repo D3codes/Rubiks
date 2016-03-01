@@ -526,6 +526,53 @@ public class Cube{
 		return c.getFaces();
 	}
 
+	public void printCrossCube(){
+
+		String block = "[]";
+
+		for(int i = 0; i < 3; i++){
+
+			io.print("      ");
+			for(int j = i*3; j < (i*3)+3; j++)
+				switch(faces[4][j]){
+
+					case 0:
+						io.colorPrint("GREEN", block);
+						break;
+
+					case 1:
+						io.colorPrint("RED", block);
+						break;
+
+					case 2:
+						io.colorPrint("BLUE", block);
+						break;
+	
+					case 3:
+						io.colorPrint("PURPLE", block);
+						break;
+
+					case 4:
+						io.colorPrint("WHITE", block);
+						break;
+	
+					case 5:
+						io.colorPrint("YELLOW", block);
+						break;
+
+					case default:
+						break;
+				}
+
+			io.println("");
+		}
+
+		
+
+
+
+	}
+
 	public void printCube(){
 		
 		String block = "[]";
