@@ -56,6 +56,6 @@ public class Test{
         cube.right();
         cube.frontInv();
 		
-		cube.printCrossCube();
+		cube.printCube();
 	}
 }

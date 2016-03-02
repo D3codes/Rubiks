@@ -526,13 +526,13 @@ public class Cube{
 		return c.getFaces();
 	}
 
-	public void printCrossCube(){
+	public void printCube(){
 
 		String block = "[]";
 
 		for(int i = 0; i < 3; i++){
 
-			io.print("      ");
+			io.print("       ");
 			for(int j = i*3; j < (i*3)+3; j++){
 				switch(faces[4][j]){
 
@@ -560,7 +560,7 @@ public class Cube{
 						io.colorPrint("YELLOW", block);
 						break;
 
-					case default:
+					default:
 						break;
 				}
 			}
@@ -568,13 +568,97 @@ public class Cube{
 			io.println("");
 		}
 
-		
+		io.println("");
 
+		for(int i = 0; i < 3; i++){
 
+			int j_tmp = 4;
+			for(int j = 3; j < j_tmp; j++){
 
+				for(int k = i*3; k < (i*3)+3; k++){
+
+					switch(faces[j][k]){
+
+						case 0:
+						io.colorPrint("GREEN", block);
+						break;
+
+					case 1:
+						io.colorPrint("RED", block);
+						break;
+
+					case 2:
+						io.colorPrint("BLUE", block);
+						break;
+	
+					case 3:
+						io.colorPrint("PURPLE", block);
+						break;
+
+					case 4:
+						io.colorPrint("WHITE", block);
+						break;
+	
+					case 5:
+						io.colorPrint("YELLOW", block);
+						break;
+
+					default:
+						break;
+					}
+				}
+				io.print(" ");
+
+				if(j == 3){
+					j = -1;
+					j_tmp = 3;
+				}
+			}
+
+			io.println("");
+		}
+
+		io.println("");
+
+		for(int i = 0; i < 3; i++){
+
+			io.print("       ");
+			for(int j = i*3; j < (i*3)+3; j++){
+				switch(faces[5][j]){
+
+					case 0:
+						io.colorPrint("GREEN", block);
+						break;
+
+					case 1:
+						io.colorPrint("RED", block);
+						break;
+
+					case 2:
+						io.colorPrint("BLUE", block);
+						break;
+	
+					case 3:
+						io.colorPrint("PURPLE", block);
+						break;
+
+					case 4:
+						io.colorPrint("WHITE", block);
+						break;
+	
+					case 5:
+						io.colorPrint("YELLOW", block);
+						break;
+
+					default:
+						break;
+				}
+			}
+			io.println("");
+		}
 	}
 
-	public void printCube(){
+	public void printCubeOld(){
 		
 		String block = "[]";
 

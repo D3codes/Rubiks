@@ -12,6 +12,8 @@ public class Solver{
 	private int[][] midRedYellow = new int[6][9];
 	private int[][] midOrangeYellow = new int[6][9];
 	private int[][] middleRow = new int[6][9];
+
+	private int[][] blueLine = new int[6][9];
 	private int[][] blueCross = new int[6][9];
 	private int[][] solved = new int[6][9];
 
@@ -23,6 +25,7 @@ public class Solver{
 				greenCross[i][j] = -1;
 				greenFace[i][j] = -1;
 				middleRow[i][j] = -1;
+				blueLine[i][j] = -1;
 				blueCross[i][j] = -1;
 				solved[i][j] = i;
 			}
@@ -109,16 +112,17 @@ public class Solver{
 
 		for(int i = 0; i < 6; i++)
 			for(int j = 0; j < 9; j++)
-				blueCross[i][j] = middleRow[i][j];
+				blueLine[i][j] = middleRow[i][j];
 
-		blueCross[1][5] = 1;
-		blueCross[2][1] = 2;
-		blueCross[2][3] = 2;
+		blueLine[2][1] = 2;
+		blueLine[2][7] = 2;
+
+		for(int i = 0; i < 6; i++)
+			for(int j = 0; j < 9; j++)
+				blueCross[i][j] = blueLine[i][j];
+
 		blueCross[2][5] = 2;
-		blueCross[2][7] = 2;
-		blueCross[3][3] = 3;
-		blueCross[4][1] = 4;
-		blueCross[5][7] = 5;
+		blueCross[2][3] = 2;
 	}
 
 	public Cube solve(Cube cube){
@@ -183,8 +187,42 @@ public class Solver{
 
 		Algorithms alg = new Algorithms();
 		cube = alg.fillMiddle(cube);
+		io.clear();
 		cube.printCube();
 		
+		boolean once = false;
+		while(ham.getDistanceToGoal(cube, blueLine) != 0){
+
+			if(!once){
+				cube = ce.evolve(cube, blueLine, 5);
+				once = true;
+			} else {
+				
+				cube = ce.evolve(cube, blueLine, 4);
+			}
+
+			turns++;
+			io.clear();
+			io.println("Turns: "+turns+"\t| Distance to Blue line: "+ham.getDistanceToGoal(cube, blueLine));
+			cube.printCube();
+		}
+
+		once = false;
+		while(ham.getDistanceToGoal(cube, blueCross) != 0){
+
+			if(!once){
+				cube = ce.evolve(cube, blueCross, 5);
+				once = true;
+			} else {
+
+				cube = ce.evolve(cube, blueCross, 4);
+			}
+
+			turns++;
+			io.clear();
+			io.println("Turns: "+turns+"\t| Distance to Blue cross: "+ham.getDistanceToGoal(cube, blueCross));
+			cube.printCube();
+		}
 
 		io.println("Solved in "+turns+" turns");
 		return cube;
