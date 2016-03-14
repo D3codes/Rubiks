@@ -4,11 +4,6 @@ public class Rubik{
 
 	public static void main(String[] args){
 
-		go();
-	}
-
-	public static void go(){
-
 		splashScreen();
 		Cube cube = new Cube(start());
 		interact(cube);
@@ -165,8 +160,8 @@ public class Rubik{
 
 	public static Cube turnSides(Cube cube){
 
-		io.println("R = R, R' = r, L = L, L' = l, U = U, U' = u, D = D, D' = d, F = F, F' = f, B = B, B' = b");
-		io.println("Turns can be one at a time or given in a string. All valid turns will be performed in the order given.");
+		io.println("R = R, R' = r, L = L, L' = l, U = U, U' = u,\nD = D, D' = d, F = F, F' = f, B = B, B' = b");
+		io.println("Turns can be one at a time or given in a string.\nAll valid turns will be performed in the order given.");
 		io.print(": ");
 		String input = io.getString();
 

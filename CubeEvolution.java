@@ -51,14 +51,11 @@ public class CubeEvolution{
 
 		int lowestIndex = 0;
 		int lowestDistance = 100;
-		for(int i = 0; i < answers.length; i++){
-
-			//io.println(""+answers[i]);
+		for(int i = 0; i < answers.length; i++)
 			if(answers[i] < lowestDistance){
 				lowestDistance = answers[i];
 				lowestIndex = i;
 			}
-		}
 
 		return indexes.get(lowestIndex);
 	}
@@ -94,8 +91,6 @@ public class CubeEvolution{
 
 	private int mostFit(Cube cube, int[][] goal, int depth, int fitness){
 
-		//io.println(""+fitness);
-
 		if(depth < 1)
 			return fitness;
 
@@ -121,7 +116,6 @@ public class CubeEvolution{
 
 		while(true){
 			
-			//check.printCube();
 			if(ham.getDistance(check) == 0){
 			
 				check.printCube();
@@ -169,7 +163,7 @@ public class CubeEvolution{
 		return options;
 	}
 
-	public Cube nextGen(Cube cube, int depth){
+	/*public Cube nextGen(Cube cube, int depth){
 
 		if(depth < 1)
 			return cube;
@@ -185,37 +179,5 @@ public class CubeEvolution{
 			genCheck[i] = nextGen(options[i], depth-1);
 
 		return genCheck[ham.mostFit(genCheck)];
-	}
-
-	/*private int[] mostFit(Cube cube, int maxFit, int maxInd, int depth){
-
-		if(depth < 1){
-
-			int[] tmp = {maxFit, maxInd};
-			return tmp;
-		}
-
-		Cube[] options = makeOptions(cube);
-
-		int[] fitness = new int[12];
-		for(int i = 0; i < fitness.length; i++)
-			fitness[i] = 100;
-
-		Hamming ham = new Hamming();
-		for(int i = 0; i < options.length; i++){
-
-			if(ham.getDistance(options[i]) < maxFit){
-
-				maxFit = ham.getDistance(options[i]);
-				maxInd = i;
-			}
-
-			int[] tmp = mostFit(options[i], maxFit, maxInd, depth-1);
-			maxFit = tmp[0];
-			maxInd = tmp[1];
-		}
-
-		int[] answer = {maxFit, maxInd};
-		return answer;
 	}*/
 }

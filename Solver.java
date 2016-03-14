@@ -214,7 +214,7 @@ public class Solver{
 				cube = ce.evolve(cube, blueCross, 5);
 				once = true;
 			} else {
-
+				
 				cube = ce.evolve(cube, blueCross, 4);
 			}
 

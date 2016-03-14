@@ -15,8 +15,8 @@ public class InOut{
 
 	private Scanner scanner = new Scanner(System.in);
 
-	public void clear()
-	{
+	public void clear(){
+		
 		System.out.print(ANSI_CLEAR+ANSI_HOME);
 	}
 
